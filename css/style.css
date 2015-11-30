@@ -73,6 +73,14 @@ h6 {
 .backstretch {
     height: 85% !important;
 }
+.menu {
+    margin: 0 auto;
+    width: 380px;
+}
+
+.menu a:hover {
+    color: #3c8e80;
+}
 .hexagon {
     position: relative;
     width: 140px;

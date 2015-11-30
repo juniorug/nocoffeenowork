@@ -39,6 +39,15 @@
     <!-- Header Section Starts -->
     <header id="header">
         <div class="header-overlay">
+            <div class="menu">
+                <a class="home <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/home">HOME</a>
+                |
+                <a class="produtos <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/produtos">PRODUTOS</a>
+                |
+                <a class="status <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/status">STATUS</a>
+                |
+                <a class="editar <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/editar">EDITAR LISTA</a>
+            </div>
             <div class="container">
                 <!-- Logo Starts -->
                 
