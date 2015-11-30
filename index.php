@@ -36,6 +36,7 @@
     <div class="loader">
     </div>
     <!-- Preloader Ends -->
+    <section>
     <!-- Header Section Starts -->
     <header id="header">
         <div class="header-overlay">
@@ -242,7 +243,7 @@
             <!-- Copyright Starts -->
             <div data-scroll-reveal="enter bottom and move 50px over 1.2s">
                 <p data-scroll-reveal="enter over 3.2s">
-                   Vidacon Administração de Condomínios - <a href="cores.html">Todos os direitos reservados.</a> &copy <a href="http://www.juniormascarenhas.com">
+                   NoCoffeeNoWork - Todos os direitos reservados. &copy <a href="http://www.juniormascarenhas.com">
                         JuniorMascarenhas.com</a>
                 </p>
             </div>
