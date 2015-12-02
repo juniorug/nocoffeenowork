@@ -140,13 +140,37 @@
             <div class="container">
                 <!-- Main Heading Starts -->
                 <div class="main-head">
-                    <div data-scroll-reveal="enter top and move 50px over 1.2s">
-                    	<span class="fa fa-users"></span>
-                    	<h2>QUEM SOMOS<br /></h2><br />
+                    <div data-scroll-reveal="enter bottom and move 50px over 1.2s">
+                    	<table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Nome</th>
+                                <th>Quantidade de caixas</th>
+                                <th>Valor Total (+tx de envio)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Joao</td>
+                                <td>0</td>
+                                <td>R$ 0,00</td>
+                              </tr>
+                              <tr>
+                                <td>Maria</td>
+                                <td>1</td>
+                                <td>R$ 27,50</td>
+                              </tr>
+                              <tr>
+                                <td>Junior</td>
+                                <td>2</td>
+                                <td>R$ 50,00</td>
+                              </tr>
+                            </tbody>
+                        </table>
                     </div>
-					<h5 data-scroll-reveal="enter bottom and move 50px over 1.4s" style="display: inline;">
+					<h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
                         A VIDEIRA ADMINISTRAÇÃO DE CONDOMÍNIOS – VIDACON - </h5>
-                    <p data-scroll-reveal="enter bottom and move 50px over 1.4s" style="display: inline;">
+                    <p data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
                         Nasceu com o propósito tornar-se uma administradora de destaque no que se refere ao compremetimento, 
                         satisfação e transparência com seus clientes, colaboradores, fornecedores e parceiros. Nosso principal 
                         objetivo é prestar serviços de Gestão Condominial com pontualidade e excelente padrão de qualidade. 

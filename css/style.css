@@ -195,9 +195,16 @@ ul.countdown li p {
     font-size: 24px;
     line-height: 36px;
 }
+.main-head td{
+    text-align: left;
+}
 /* Services */
 
-#services {} .sblock {
+#services {
+   /*margin-top: -105px;*/
+} 
+
+.sblock {
     border: 1px solid transparent;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
