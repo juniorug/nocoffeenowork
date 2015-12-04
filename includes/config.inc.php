@@ -15,11 +15,7 @@
 	date_default_timezone_set('America/Bahia');
     $siteUrl = "http://nocoffeenowork.esy.es/";
 
-	//url amigavel:         
-	//$url = explode('/', substr($_SERVER['REQUEST_URI'], strpos('/',$_SERVER['REQUEST_URI'] )+1,strlen($_SERVER['REQUEST_URI'])));
-	
-	
-	# Vari�vel urlSite
+	# Variavel urlSite
     $url = $_SERVER['REQUEST_URI'];
 	if (strpos($url,'?')) $url = substr($url,0,strpos($url,'?'));
 	$url = substr($url,strlen(BASE),strlen($url));

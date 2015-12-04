@@ -45,7 +45,6 @@
 			array_push($produtos, $produto);
 		}
 	}
-//id_pessoa,$id_pedido,$produtos,$val_total
 
 	//create query to get all ppp;
 	$sql = "SELECT p.id as id_pessoa, p.nome, 
@@ -74,13 +73,10 @@
 				}
 				$id_pessoa_aux = $row["id_pessoa"];
 				$produtos = array();
-				//array_push($produtos,$row["id_produto"] => $row["qtde"]);
-				//$produtos[$row["id_produto"]] => $row["qtde"];
 				$produtos = array_push_assoc($produtos, $row["id_produto"],  $row["qtde"]);
 				$pppSingle = new PPPSingle($row["id_pessoa"],$row["nome"], $row["id_pedido"], $produtos, $row["val_total"]);
 				
 			} else {
-				//$produtos[$row["id_produto"]] => $row["qtde"];
 				$produtos = array_push_assoc($produtos, $row["id_produto"],  $row["qtde"]);
 				$pppSingle->set_produtos($produtos);
 				$pppSingle->increment_val_total($row["val_total"]);
@@ -88,11 +84,6 @@
 			}
 		}
 		array_push($ppp, $pppSingle);
-		echo("PPPSingleAFTER2: <br />");
-		print_r($ppp);
-		echo("<br />");
 	}
-
-	$conn->close();
-	
+	$conn->close();	
 ?>

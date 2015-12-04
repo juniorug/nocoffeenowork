@@ -154,7 +154,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
+                              <? /*<tr>
                                 <td>Joao</td>
                                 <td>0</td>
                                 <td>R$ 0,00</td>
@@ -168,56 +168,63 @@
                                 <td>Junior</td>
                                 <td>2</td>
                                 <td>R$ 50,00</td>
-                              </tr>
+                              </tr>*/
+							  foreach($pessoas as $pessoa){
+							    $found = false;
+								echo '<tr><td>'.$pessoa['nome'].'</td>';
+								foreach($ppp as $ppp_single){
+									if($ppp_unique->id_pessoa == $pessoa['id']){
+										$found = true;
+										echo '<td>'.$ppp_single->get_qtde_caixas().'</td>';
+										echo '<td>R$ '.$ppp_single->getval_total().'</td>';
+									}
+								}
+								if(!$found){
+									echo '<td>0</td>';
+									echo '<td>R$ 0,00</td>';
+								}
+								echo '</tr>';
+							  }
+							  ?>
                             </tbody>
                         </table>
                     </div>
 					<h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
-                        A VIDEIRA ADMINISTRAÇÃO DE CONDOMÍNIOS – VIDACON - </h5>
-                    <p data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
-                        Nasceu com o propósito tornar-se uma administradora de destaque no que se refere ao compremetimento, 
-                        satisfação e transparência com seus clientes, colaboradores, fornecedores e parceiros. Nosso principal 
-                        objetivo é prestar serviços de Gestão Condominial com pontualidade e excelente padrão de qualidade. 
-                        E para isso buscamos um atendimento personalizado e direcionado as necessidadesdo seu condomínio, 
-                        atuando junto com os síndicos, além de promover treinamentos aos funcionários e apaerfeiçoamento das 
-                        técnicas administrativas para que possamos acompanhar as mudanças do mercado.
-                    </p>
+                    	<?
+							$qtde_min_caixas = 30;
+							$consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_corrente = 1');
+							while($qtde_caixas = $DB->lista($consulta)){
+								echo 'Temos '.$qtde_caixas.' no estoque. Faltam '.($qtde_min_caixas - $qtde_caixas).'caixas para realizarmos o próximo pedido.';
+							}
+						?>
+                    </h5>
                 </div>
                 <!-- Main Heading Ends -->
                 <!-- Services List Starts -->
                 <div id="services-blocks" class="row">
-                    <div data-scroll-reveal="enter bottom and move 50px over 1.6s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-crosshairs"></span>
-                        <h4>
-                            Missão</h4>
-                        <p>
-                            Buscar a excelência na prestação dos nossos serviços. Garantir a satisfação dos clientes cumprindo 
-                            os acordos feitos entre ambos, promover uma gestão participativa. Além de promover investimentos em 
-                            funcionários e colaboradores para que os mesmos tenham oportunidades de crescimento pessoal e profissional, 
-                            pois entendemos que o nosso maior patrimônio são as pessoas.
-                        </p>
-                    </div>
-                    <div data-scroll-reveal="enter top and move 50px over 1.7s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-eye"></span>
-                        <h4>
-                            Visão</h4>
-                        <p>
-                            Ser a melhor a administradora de bens patrimoniais do mercado imobiliário do Estado da Bahia, onde as 
-                            pessoas trabalhem de forma honesta e harmônica.
-                        </p>
-                    </div>
-                    <div data-scroll-reveal="enter bottom and move 50px over 1.8s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-key"></span>
-                        <h4>
-                            Valores</h4>
-                        <p>
-                            <b>A VIDEIRA ADMINISTRAÇÃO DE CONDOMÍNIOS – VIDACON –</b> acredita que somente através da valorização das 
-                            pessoas é possível atingir os objetivos e alcançar os resultados esperados. Sabemos da importância do nosso 
-                            papel dentro do cenário que atuamos e para isso contribuimos profissionalmente e socialmente afim de oferecermos 
-                            para as famílias, aquilo que elas esperam contar, serviços que lhe deem garantia de segurança e qualidade de vida. 
-                            Nosso lema é: <u>Servir sempre, melhor e mais!</u>
-                        </p>
-                    </div>
+                   <?
+						$count = 0;
+						foreach($produtos as $produto){
+							if ($count == 0){
+								echo '<tr>';
+							}
+							echo '<td>';
+							echo '<div class="imgcoffee"><img src="'.$produto["img"].'" /></div>';
+							echo '<div class="imgdescription"><p>'.$produto["descricao"].'<p></div>';
+							echo '</td>';		
+							if  ($count == 2){
+								echo '</tr>';
+								$count  = 0;
+							} else {
+								$count ++;
+							}
+							
+						}
+						if  ($count != 0){
+							echo '</tr>';
+						}
+					
+					?>
                 </div>
                 <!-- Services List Ends -->
             </div>

@@ -107,4 +107,11 @@ Class PPPSingle {
 		echo 'produtos: '; print_r($this->produtos);echo '<br />';
 		echo 'val_total: '.$this->val_total.'<br />';
 	}
+	public function get_qtde_caixas(){
+		$count = 0;
+		foreach($this->produtos as $produto=>$qtde){
+			$count += $qtde;
+		}
+		return $count;
+	}
 }
