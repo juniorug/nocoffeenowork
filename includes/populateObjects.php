@@ -72,13 +72,13 @@
 					array_push($ppp, $pppSingle);
 				}
 				$id_pessoa_aux = $row["id_pessoa"];
-				$produtos = array();
-				$produtos = array_push_assoc($produtos, $row["id_produto"],  $row["qtde"]);
-				$pppSingle = new PPPSingle($row["id_pessoa"],$row["nome"], $row["id_pedido"], $produtos, $row["val_total"]);
+				$prod = array();
+				$prod = array_push_assoc($prod, $row["id_produto"],  $row["qtde"]);
+				$pppSingle = new PPPSingle($row["id_pessoa"],$row["nome"], $row["id_pedido"], $prod, $row["val_total"]);
 				
 			} else {
-				$produtos = array_push_assoc($produtos, $row["id_produto"],  $row["qtde"]);
-				$pppSingle->set_produtos($produtos);
+				$prod = array_push_assoc($prod, $row["id_produto"],  $row["qtde"]);
+				$pppSingle->set_produtos($prod);
 				$pppSingle->increment_val_total($row["val_total"]);
 				
 			}

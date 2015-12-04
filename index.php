@@ -154,77 +154,73 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <? /*<tr>
-                                <td>Joao</td>
-                                <td>0</td>
-                                <td>R$ 0,00</td>
-                              </tr>
-                              <tr>
-                                <td>Maria</td>
-                                <td>1</td>
-                                <td>R$ 27,50</td>
-                              </tr>
-                              <tr>
-                                <td>Junior</td>
-                                <td>2</td>
-                                <td>R$ 50,00</td>
-                              </tr>*/
-							  foreach($pessoas as $pessoa){
-							    $found = false;
-								echo '<tr><td>'.$pessoa['nome'].'</td>';
-								foreach($ppp as $ppp_single){
-									if($ppp_unique->id_pessoa == $pessoa['id']){
-										$found = true;
-										echo '<td>'.$ppp_single->get_qtde_caixas().'</td>';
-										echo '<td>R$ '.$ppp_single->getval_total().'</td>';
-									}
-								}
-								if(!$found){
-									echo '<td>0</td>';
-									echo '<td>R$ 0,00</td>';
-								}
-								echo '</tr>';
-							  }
-							  ?>
+                              <? 
+                                foreach($pessoas as $pessoa){
+                                    
+                                    $found = false;
+                                    echo '<tr><td>'.$pessoa->getnome().'</td>';
+                                    foreach($ppp as $ppp_single){
+                                        if($ppp_single->getid_pessoa() == $pessoa->getid()){
+                                            $found = true;
+                                            echo '<td>'.$ppp_single->get_qtde_caixas().'</td>';
+                                            echo '<td>R$ '.$ppp_single->getval_total().'</td>';
+                                        }
+                                    }
+                                    if(!$found){
+                                        echo '<td>0</td>';
+                                        echo '<td>R$ 0,00</td>';
+                                    }
+                                    echo '</tr>';
+							  } 
+                               ?>
                             </tbody>
                         </table>
                     </div>
 					<h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
-                    	<?
+                        <?
 							$qtde_min_caixas = 30;
-							$consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_corrente = 1');
-							while($qtde_caixas = $DB->lista($consulta)){
-								echo 'Temos '.$qtde_caixas.' no estoque. Faltam '.($qtde_min_caixas - $qtde_caixas).'caixas para realizarmos o próximo pedido.';
-							}
+							$consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_atual = 1');
+                            $total = $consulta->fetch_row();
+                            $diff = (($qtde_min_caixas - $total[0]) > 0) ? ($qtde_min_caixas - $total[0]) : 0;
+                            echo 'Temos '.$total[0].' caixas no estoque. Faltam '.$diff.' caixas para realizarmos o próximo pedido.<br />';
 						?>
                     </h5>
                 </div>
                 <!-- Main Heading Ends -->
                 <!-- Services List Starts -->
                 <div id="services-blocks" class="row">
-                   <?
-						$count = 0;
-						foreach($produtos as $produto){
-							if ($count == 0){
-								echo '<tr>';
-							}
-							echo '<td>';
-							echo '<div class="imgcoffee"><img src="'.$produto["img"].'" /></div>';
-							echo '<div class="imgdescription"><p>'.$produto["descricao"].'<p></div>';
-							echo '</td>';		
-							if  ($count == 2){
-								echo '</tr>';
-								$count  = 0;
-							} else {
-								$count ++;
-							}
-							
-						}
-						if  ($count != 0){
-							echo '</tr>';
-						}
-					
-					?>
+                    <div data-scroll-reveal="enter bottom and move 50px over 1.6s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
+                        <span class="fa fa-crosshairs"></span>
+                        <h4>
+                            Missão</h4>
+                        <p>
+                            Buscar a excelência na prestação dos nossos serviços. Garantir a satisfação dos clientes cumprindo 
+                            os acordos feitos entre ambos, promover uma gestão participativa. Além de promover investimentos em 
+                            funcionários e colaboradores para que os mesmos tenham oportunidades de crescimento pessoal e profissional, 
+                            pois entendemos que o nosso maior patrimônio são as pessoas.
+                        </p>
+                    </div>
+                    <div data-scroll-reveal="enter top and move 50px over 1.7s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
+                        <span class="fa fa-eye"></span>
+                        <h4>
+                            Visão</h4>
+                        <p>
+                            Ser a melhor a administradora de bens patrimoniais do mercado imobiliário do Estado da Bahia, onde as 
+                            pessoas trabalhem de forma honesta e harmônica.
+                        </p>
+                    </div>
+                    <div data-scroll-reveal="enter bottom and move 50px over 1.8s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
+                        <span class="fa fa-key"></span>
+                        <h4>
+                            Valores</h4>
+                        <p>
+                            <b>A VIDEIRA ADMINISTRAÇÃO DE CONDOMÍNIOS – VIDACON –</b> acredita que somente através da valorização das 
+                            pessoas é possível atingir os objetivos e alcançar os resultados esperados. Sabemos da importância do nosso 
+                            papel dentro do cenário que atuamos e para isso contribuimos profissionalmente e socialmente afim de oferecermos 
+                            para as famílias, aquilo que elas esperam contar, serviços que lhe deem garantia de segurança e qualidade de vida. 
+                            Nosso lema é: <u>Servir sempre, melhor e mais!</u>
+                        </p>
+                    </div>
                 </div>
                 <!-- Services List Ends -->
             </div>
@@ -233,42 +229,30 @@
     <!-- Services Section Ends -->
     <!-- Contact Us Section Starts -->
     <section id="contact">
-        <div class="container">
-            <!-- Main Heading Starts -->
-            <div class="main-head" style="z-index: 9999;">
-                <h2 data-scroll-reveal="enter top and move 50px over 1.2s" class="MT40">
-                    Subscreva & Fique atualizado</h2>
-            </div>
-            <!-- Main Heading Ends -->
-            <!-- Form & Address Blocks Starts -->
-            <div class="row">
-                <!-- Contact Form Starts -->
-                <div data-scroll-reveal="enter left and move 50px over 1.6s" id="contact-area" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <form id="contact-form" class="contact-form" name="contact-form" method="post" action="contact.php">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control" required placeholder="Digite Seu Nome">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" required placeholder="Digite Seu Email">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info">Subscrever</button>
-                    </div>
-                    </form>
-                </div>
-                <!-- Contact Form Ends -->
-                <!-- Contact Address Starts -->
-                <div data-scroll-reveal="enter right and move 50px over 1.8s" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sagittis lectus quis lorem tincidunt dapibus. 
-                        Donec pellentesque enim odio, eget pharetra quam placerat lacinia. Integer id suscipit dolor. Etiam laoreet 
-                        justo vitae est tincidunt condimentum. Phasellus vel sem in nulla ultrices condimentum. Nullam sollicitudin 
-                        sollicitudin dignissim.
-                    </p>
-                </div>
-                <!-- Contact Address Ends -->
-            </div>
-            <!-- Form & Address Blocks Ends -->
+        <div class="container" data-scroll-reveal="enter bottom and move 50px over 1.2s">
+            <?
+                $count = 0;
+                foreach($produtos as $produto){
+                    if ($count == 0){
+                        echo '<tr>';
+                    }
+                    echo '<td style="float:left;">';
+                    echo '<div class="imgcoffee"><img src="'.$siteUrl.'/images/'.$produto->getimg().'" /></div>';
+                    echo '<div class="imgdescription"><p>'.$produto->getdescricao().'<p></div>';
+                    echo '</td>';		
+                    if  ($count == 2){
+                        echo '</tr>';
+                        $count  = 0;
+                    } else {
+                        $count ++;
+                    }
+
+                }
+                if  ($count != 0){
+                    echo '</tr>';
+                }
+            ?>
+
         </div>
     </section>
     <!-- Contact Us Section Ends -->
