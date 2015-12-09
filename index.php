@@ -45,13 +45,15 @@
     <header id="header">
         <div class="header-overlay">
             <div class="menu">
-                <a class="home <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/home">HOME</a>
+                <a class="home <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="#header">HOME</a>
                 |
-                <a class="produtos <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/produtos">PRODUTOS</a>
+                <a class="lista <? if(($url['0'] == '') ||($url['0'] == 'lista')){ echo 'menu_on'; }?>" href="#lista">LISTA</a>
                 |
-                <a class="status <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/status">STATUS</a>
+                <a class="status <? if(($url['0'] == '') ||($url['0'] == 'status')){ echo 'menu_on'; }?>" href="#status">STATUS</a>
                 |
-                <a class="editar <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="http://nocoffeenowork.esy.es/editar">EDITAR LISTA</a>
+                <a class="produtos <? if(($url['0'] == '') ||($url['0'] == 'produtos')){ echo 'menu_on'; }?>" href="#produtos">PRODUTOS</a>
+                |    
+                <a class="editar <? if(($url['0'] == '') ||($url['0'] == 'editar')){ echo 'menu_on'; }?>" href="#editar">EDITAR LISTA</a>
             </div>
             <div class="container">
                 <!-- Logo Starts -->
@@ -139,13 +141,13 @@
     </section>
     
     <!-- Services Section Starts -->
-    <section id="services">
+    <section id="services" style="margin-top: -45px;">
         <div class="services-overlay">
             <div class="container">
                 <!-- Main Heading Starts -->
-                <div class="main-head">
+                <div class="main-head" id="lista">
                     <div data-scroll-reveal="enter bottom and move 50px over 1.2s">
-                    	<table class="table table-hover">
+                    	<table class="table table-hover table-hover-color">
                             <thead>
                               <tr>
                                 <th>Nome</th>
@@ -176,60 +178,26 @@
                             </tbody>
                         </table>
                     </div>
-					<h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
+                </div>
+                <div style="text-align: center;" id="status">
+                    <h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
                         <?
-							$qtde_min_caixas = 30;
-							$consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_atual = 1');
+                            $qtde_min_caixas = 30;
+                            $consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_atual = 1');
                             $total = $consulta->fetch_row();
                             $diff = (($qtde_min_caixas - $total[0]) > 0) ? ($qtde_min_caixas - $total[0]) : 0;
                             echo 'Temos '.$total[0].' caixas no estoque. Faltam '.$diff.' caixas para realizarmos o próximo pedido.<br />';
-						?>
+                        ?>
                     </h5>
                 </div>
-                <!-- Main Heading Ends -->
-                <!-- Services List Starts -->
-                <div id="services-blocks" class="row">
-                    <div data-scroll-reveal="enter bottom and move 50px over 1.6s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-crosshairs"></span>
-                        <h4>
-                            Missão</h4>
-                        <p>
-                            Buscar a excelência na prestação dos nossos serviços. Garantir a satisfação dos clientes cumprindo 
-                            os acordos feitos entre ambos, promover uma gestão participativa. Além de promover investimentos em 
-                            funcionários e colaboradores para que os mesmos tenham oportunidades de crescimento pessoal e profissional, 
-                            pois entendemos que o nosso maior patrimônio são as pessoas.
-                        </p>
-                    </div>
-                    <div data-scroll-reveal="enter top and move 50px over 1.7s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-eye"></span>
-                        <h4>
-                            Visão</h4>
-                        <p>
-                            Ser a melhor a administradora de bens patrimoniais do mercado imobiliário do Estado da Bahia, onde as 
-                            pessoas trabalhem de forma honesta e harmônica.
-                        </p>
-                    </div>
-                    <div data-scroll-reveal="enter bottom and move 50px over 1.8s" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 sblock">
-                        <span class="fa fa-key"></span>
-                        <h4>
-                            Valores</h4>
-                        <p>
-                            <b>A VIDEIRA ADMINISTRAÇÃO DE CONDOMÍNIOS – VIDACON –</b> acredita que somente através da valorização das 
-                            pessoas é possível atingir os objetivos e alcançar os resultados esperados. Sabemos da importância do nosso 
-                            papel dentro do cenário que atuamos e para isso contribuimos profissionalmente e socialmente afim de oferecermos 
-                            para as famílias, aquilo que elas esperam contar, serviços que lhe deem garantia de segurança e qualidade de vida. 
-                            Nosso lema é: <u>Servir sempre, melhor e mais!</u>
-                        </p>
-                    </div>
-                </div>
-                <!-- Services List Ends -->
             </div>
         </div>
     </section>
     <!-- Services Section Ends -->
     <!-- Contact Us Section Starts -->
-    <section id="contact">
+    <section id="produtos" style="margin-top: 40px;">
         <div class="container" data-scroll-reveal="enter bottom and move 50px over 1.2s">
+            <table class="table table-hover table-products"> <tbody>
             <?
                 $count = 0;
                 foreach($produtos as $produto){
@@ -240,7 +208,7 @@
                     echo '<div class="imgcoffee"><img src="'.$siteUrl.'/images/'.$produto->getimg().'" /></div>';
                     echo '<div class="imgdescription"><p>'.$produto->getdescricao().'<p></div>';
                     echo '</td>';		
-                    if  ($count == 2){
+                    if  ($count == 4){
                         echo '</tr>';
                         $count  = 0;
                     } else {
@@ -252,7 +220,7 @@
                     echo '</tr>';
                 }
             ?>
-
+            </tbody></table>                    
         </div>
     </section>
     <!-- Contact Us Section Ends -->

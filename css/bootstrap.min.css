@@ -1628,6 +1628,18 @@ th
 	padding: 8px;
 	vertical-align: top;
 }
+
+.table-products>thead>tr>th,.table-products>tbody>tr>th,.table-products>tfoot>tr>th,.table-products>thead>tr>td,.table-products>tbody>tr>td,.table-products>tfoot>tr>td
+{
+	border: 1px solid #ddd;
+	line-height: 1.42857143;
+	padding: 8px;
+	vertical-align: top;
+}
+
+.table-products>tbody>tr>td:hover{
+	background-color: rgba(60,142,128,0.8);
+}
 .table>thead>tr>th
 {
 	border-bottom: 2px solid #ddd;
@@ -1665,7 +1677,8 @@ th
 {
 	background-color: #f9f9f9;
 }
-.table-hover>tbody>tr:hover>td,.table-hover>tbody>tr:hover>th
+/*.table-hover>tbody>tr:hover>td,.table-hover>tbody>tr:hover>th*/
+.table-hover-color>tbody>tr:hover>td,.table-hover-color>tbody>tr:hover>th    
 {
 	background-color: rgba(60,142,128,0.8);
 }

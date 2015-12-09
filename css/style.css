@@ -61,7 +61,8 @@ h6 {
 
 #header {} .header-overlay {
     background: rgba(0, 0, 0, 0.6);
-    padding: 30px 0;
+    /*padding: 30px 0;*/
+    padding-top: 30px;
 }
 .coffee{
     position: absolute;
@@ -75,7 +76,7 @@ h6 {
 }
 .menu {
     margin: 0 auto;
-    width: 395px;
+    width: 450px;
 }
 
 .menu a:hover {
@@ -221,7 +222,8 @@ ul.countdown li p {
 }
 .services-overlay {
     background: rgba(0, 0, 0, 0.9);
-    padding: 70px 0;
+    /*padding: 70px 0;*/
+    padding-bottom: 70px;
 }
 
 #services-blocks {} #services-blocks div {
