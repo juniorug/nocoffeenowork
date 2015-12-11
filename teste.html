@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Atualização com JS puro</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <select id="selecao">
+            <option value="1ª opção" selected>Primeira opção aqui</option>
+            <option value="2ª opção">Segunda opção aqui</option>
+            <option value="personalizar">Personalizar</option>
+        </select>
+        <input id="caixa1" type="text" />
+        <div id="div_personalizar" style="visibility: hidden;">
+            <input type="radio" name="radios" checked /> Opção padrão
+            <input type="radio" name="radios" /> Opção escondida
+        </div>
+        <script>
+            // Selecionamos o menu dropdown, que possui os valores possíveis:
+            var menu_dropdown = document.getElementById("selecao");
+
+            // Requisitamos que a função handler (que copia o valor selecionado para a caixa de texto) [...]
+            // [...] seja executada cada vez que o valor do menu dropdown mude:
+            menu_dropdown.addEventListener("change", function(){
+
+                // Como este código é executado após cada alteração, sempre obtemos o valor atualizado:
+                var valor_selecionado = menu_dropdown.options[menu_dropdown.selectedIndex].value;
+
+                // Altere este código se desejar resultados mais complexos:
+                if(valor_selecionado == "personalizar"){
+                    document.getElementById("div_personalizar").style.visibility = "";
+                } else {
+                    document.getElementById("caixa1").value = valor_selecionado;
+                    document.getElementById("div_personalizar").style.visibility = "hidden";
+                }
+
+            });
+            // Opcional: copia o valor inicial. Sem essa linha, a caixa de texto inicia vazia.
+            document.getElementById("caixa1").value = menu_dropdown.options[menu_dropdown.selectedIndex].value;
+        </script>
+    </body>
+</html>

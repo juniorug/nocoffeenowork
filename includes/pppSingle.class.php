@@ -36,6 +36,12 @@ Class PPPSingle {
 	public function getid_pessoa(){
 		return $this->id_pessoa;
 	}
+	/**
+	 * @return nome - varchar(50)
+	 */
+	public function get_nome(){
+		return $this->nome;
+	}
 
 	/**
 	 * @return produto - array()
@@ -63,6 +69,12 @@ Class PPPSingle {
 	 */
 	public function setid_pessoa($id_pessoa){
 		$this->id_pessoa = $id_pessoa;
+	}
+	/**
+	 * @param Type: varchar(50)
+	 */
+	public function set_nome($nome){
+		$this->nome = $nome;
 	}
 
 	/**

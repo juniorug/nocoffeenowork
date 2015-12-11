@@ -44,17 +44,17 @@
     <!-- Header Section Starts -->
     <header id="header">
         <div class="header-overlay">
-            <div class="menu">
-                <a class="home <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="#header">HOME</a>
-                |
-                <a class="lista <? if(($url['0'] == '') ||($url['0'] == 'lista')){ echo 'menu_on'; }?>" href="#lista">LISTA</a>
-                |
-                <a class="status <? if(($url['0'] == '') ||($url['0'] == 'status')){ echo 'menu_on'; }?>" href="#status">STATUS</a>
-                |
-                <a class="produtos <? if(($url['0'] == '') ||($url['0'] == 'produtos')){ echo 'menu_on'; }?>" href="#produtos">PRODUTOS</a>
-                |    
-                <a class="editar <? if(($url['0'] == '') ||($url['0'] == 'editar')){ echo 'menu_on'; }?>" href="#editar">EDITAR LISTA</a>
-            </div>
+                <div class="menu">
+                    <a class="home <? if(($url['0'] == '') ||($url['0'] == 'home')){ echo 'menu_on'; }?>" href="#header">HOME</a>
+                    |
+                    <a class="lista <? if(($url['0'] == '') ||($url['0'] == 'lista')){ echo 'menu_on'; }?>" href="#lista">LISTA</a>
+                    |
+                    <a class="status <? if(($url['0'] == '') ||($url['0'] == 'status')){ echo 'menu_on'; }?>" href="#status">STATUS</a>
+                    |
+                    <a class="produtos <? if(($url['0'] == '') ||($url['0'] == 'produtos')){ echo 'menu_on'; }?>" href="#produtos">PRODUTOS</a>
+                    |    
+                    <a class="editar <? if(($url['0'] == '') ||($url['0'] == 'editar')){ echo 'menu_on'; }?>" href="#editar">EDITAR LISTA</a>
+                </div>
             <div class="container">
                 <!-- Logo Starts -->
                 
@@ -143,6 +143,7 @@
     <!-- Services Section Starts -->
     <section id="services" style="margin-top: -45px;">
         <div class="services-overlay">
+            <hr class="style-seven">
             <div class="container">
                 <!-- Main Heading Starts -->
                 <div class="main-head" id="lista">
@@ -195,34 +196,87 @@
     </section>
     <!-- Services Section Ends -->
     <!-- Contact Us Section Starts -->
-    <section id="produtos" style="margin-top: 40px;">
-        <div class="container" data-scroll-reveal="enter bottom and move 50px over 1.2s">
-            <table class="table table-hover table-products"> <tbody>
-            <?
-                $count = 0;
-                foreach($produtos as $produto){
-                    if ($count == 0){
-                        echo '<tr>';
-                    }
-                    echo '<td style="float:left;">';
-                    echo '<div class="imgcoffee"><img src="'.$siteUrl.'/images/'.$produto->getimg().'" /></div>';
-                    echo '<div class="imgdescription"><p>'.$produto->getdescricao().'<p></div>';
-                    echo '</td>';		
-                    if  ($count == 4){
-                        echo '</tr>';
-                        $count  = 0;
-                    } else {
-                        $count ++;
-                    }
+    <div class="product_img"> 
+        <section id="produtos" style="margin-top: 40px;">
+            <div style="margin: 0px 0px 15px 60px;">
+                <h5 data-scroll-reveal="enter left and move 50px over 1.4s" style="display: inline;"> Produtos:</h5>
+            </div>
+            <div class="container" data-scroll-reveal="enter bottom and move 50px over 1.2s"> 
+                <table class="table table-hover table-products"> <tbody>
+                <?
+                    $count = 0;
+                    foreach($produtos as $produto){
+                        if ($count == 0){
+                            echo '<tr>';
+                        }
+                        echo '<td style="float:left;">';
+                        echo '<div class="imgcoffee"><img src="'.$siteUrl.'/images/'.$produto->getimg().'" /></div>';
+                        echo '<div class="imgdescription"><p>'.$produto->getdescricao().'<p></div>';
+                        echo '</td>';		
+                        if  ($count == 4){
+                            echo '</tr>';
+                            $count  = 0;
+                        } else {
+                            $count ++;
+                        }
 
-                }
-                if  ($count != 0){
-                    echo '</tr>';
-                }
-            ?>
-            </tbody></table>                    
-        </div>
-    </section>
+                    }
+                    if  ($count != 0){
+                        echo '</tr>';
+                    }
+                ?>
+                </tbody></table>                    
+            </div>
+            <hr class="style-seven">
+            <div class="editar-lista" id="editar">
+                <div class="form-group group-name">
+                  <?
+                      echo '<div class="select-person">';
+                          echo '<label for="selPerson">Nome:</label>';
+                          echo '<select class="form-control" id="selname">';
+                          echo '<option value="0">Selecione seu nome:</option>';  
+                          foreach($pessoas as $pessoa){	
+                                echo '<option value="'.$pessoa->getid().'">'.$pessoa->getnome().'</option>';
+                          }
+                          echo '</select>';
+                      echo '</div>';
+                  ?>
+                </div>
+                <div class="form-group">
+                  <?
+                      $count = 1;
+                      $break = 0;  
+                      foreach($produtos as $produto){	
+                          if ($break == 0){
+                                echo '<div class="clear"></div>';
+                            }
+                          echo '<div class="select-product">';
+                              echo '<label for="sel'.$count.'">'.$produto->getdescricao().':</label>';
+                              echo '<select class="form-control" id="sel'.$count.'">';
+                                echo '<option>0</option>';
+                                echo '<option>1</option>';
+                                echo '<option>2</option>';
+                                echo '<option>3</option>';
+                                echo '<option>4</option>';
+                                echo '<option>5</option>';
+                              echo '</select>';
+                          echo '</div>';
+                          $count ++;
+                          if  ($break == 5){
+                                $break  = 0;
+                            } else {
+                                $break ++;
+                            }
+                      }
+                  ?>
+                    <div class="clear"></div>
+                    <div style="margin: 15px;">
+                        <button class="btn btn-success">Atualizar Lista</button>
+                    </div>
+                </div>
+             </div>
+        </section>
+    </div>    
     <!-- Contact Us Section Ends -->
     <!-- Footer Starts -->
     <footer id="footer">
@@ -245,6 +299,50 @@
     <script src="js/scrollReveal.js" type="text/javascript"></script>
     <!--<script src="js/jquery.downCount.js" type="text/javascript"></script>-->
     <script src="js/custom.js" type="text/javascript"></script>
+    <script>        
+        <? 
+            $qtde_produtos = 0;    
+            foreach($ppp as $ppp_s){
+				$prods = $ppp_s->get_produtos();
+                $qtde_produtos += count($prods);
+            } 
+        ?>
+        var ppp_sing = new Array(
+        <?
+            $count = 1;
+            foreach($ppp as $ppp_s){
+				$prods = $ppp_s->get_produtos();
+				foreach($prods as $prod_id=>$prod_qtde){
+		?>
+                    [<? echo $ppp_s->getid_pessoa(); ?>,'<? echo $prod_id; ?>','<? echo $prod_qtde; ?>'] <? if ($count < $qtde_produtos){ echo ',';}?>
+        <?
+                    $count++;
+                }
+            }
+        ?>
+        );
+
+        var menu_dropdown = document.getElementById("selname");
+        menu_dropdown.addEventListener("change", function(){
+
+            var valor_selecionado = menu_dropdown.options[menu_dropdown.selectedIndex].value;
+            var selected = '';
+            for (i = 1; i <= 22; i++) { 
+                selected = 'sel'.concat(i);
+                ddl = document.getElementById(selected);
+                ddl.value = 0;
+            }
+            
+            for (i = 0; i < ppp_sing.length; i++) { 
+                if(ppp_sing[i][0] == valor_selecionado) {
+                    selected = 'sel'.concat(ppp_sing[i][1]);
+                    ddl = document.getElementById(selected);
+                    ddl.value = ppp_sing[i][2];
+                }
+            }
+        });
+
+    </script>
 	<script>
         function startTime() {
             var today = new Date();

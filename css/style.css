@@ -241,9 +241,23 @@ ul.countdown li p {
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
+.group-name{
+    min-height: 70px !important;
+    margin-left: 15px;
+    margin-top: 15px;
+    width: 570px;
+}
 
-
-
+.clear{
+    clear:both;
+}
+.select-product{
+    width: 180px;
+    font-size: 15px;
+    float:left;
+    margin-top: 15px;
+    margin-left: 15px;
+}
 
 #services-blocks h4 {
     padding: 20px 0;
@@ -286,6 +300,46 @@ input {
     line-height: 40px !important;
     padding: 3px 20px 0;
 }
+
+
+.product_img {
+    border-style: solid;
+    border-color: #3c8e80;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+
+.editar-lista{
+    /*margin-top: 15px;*/
+    border-style: solid;
+    border-color: #3c8e80;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
+hr {
+    margin: 50px 0 5px 0;
+}
+
+hr.style-seven {
+    height: 30px;
+    border-style: solid;
+    border-color: #3c8e80;
+    border-width: 1px 0 0 0;
+    border-radius: 20px;
+}
+
+hr.style-seven:before {
+    display: block;
+    content: "";
+    height: 30px;
+    margin-top: -31px;
+    border-style: solid;
+    border-color: #3c8e80;
+    border-width: 0 0 1px 0;
+    border-radius: 20px;
+}
+
 /* Footer  */
 
 #footer {

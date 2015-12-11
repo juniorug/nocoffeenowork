@@ -1894,6 +1894,7 @@ input[type=date]
 .form-group
 {
 	margin-bottom: 15px;
+	min-height: 330px;
 }
 .radio,.checkbox
 {
@@ -2251,13 +2252,15 @@ textarea.input-lg,select[multiple].input-lg
 }
 .btn-success
 {
-	background-color: #5cb85c;
+	/*background-color: #5cb85c;*/
+	background-color: #3c8e80;
 	border-color: #4cae4c;
 	color: #fff;
 }
 .btn-success:hover,.btn-success:focus,.btn-success:active,.btn-success.active,.open .dropdown-toggle.btn-success
 {
-	background-color: #47a447;
+	/*background-color: #47a447;*/
+	background-color: #197519;
 	border-color: #398439;
 	color: #fff;
 }
