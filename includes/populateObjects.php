@@ -25,11 +25,14 @@
 	$pessoas = array();
 	$produtos = array();
 	$ppp = array();
-		
+	$id_pedido_atual = 0;
+	$count_produtos_ativos = 0;	
+
 	$servername = "127.0.0.1";
 	$username = "u358413504_user";
 	$password = "Eisa2015";
 	$dbname = "u358413504_bd";
+
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -38,7 +41,13 @@
 		die("Connection failed: " . $conn->connect_error);
 	} 
 
-	
+
+	//$id_pedido_atual, usado quando for alterar um pedido.
+	$id_pedido_atual = $conn->query("SELECT id FROM pedido WHERE pedido_atual = 1;")->fetch_object()->id; 	
+
+	//$id_pedido_atual, usado quando for alterar um pedido.
+	$count_produtos_ativos = $conn->query("SELECT COUNT(1) AS countativos FROM  produto WHERE ativo =1;")->fetch_object()->countativos;
+
 	//create query to get all pessoas select * from pessoa;
 	$sql = "SELECT * FROM pessoa where ativo=b'1'";
 	$result = $conn->query($sql);

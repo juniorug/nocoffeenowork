@@ -81,6 +81,9 @@ Class Produto {
 	public function getvalor(){
 		return $this->valor;
 	}
+	public function getvalor2decimal(){
+		return number_format($this->valor, 2,',', '.');
+	}
 
 	/**
 	 * @return reg_date - timestamp

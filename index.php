@@ -57,7 +57,19 @@
                 </div>
             <div class="container">
                 <!-- Logo Starts -->
-                
+                <?
+                   if((!empty($_GET['Ok'])) && ((!empty($_GET['msg'])))) {
+                        if (GET('Ok') == 1) {
+                            echo '<div class="alert alert-success">';
+                            echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                            echo GET('msg').'</div>';
+                        } else {
+                            echo '<div class="alert alert-danger">';
+                            echo '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>';
+                            echo GET('msg').'</div>';
+                        }
+                    } 
+                ?>    
                 <div data-scroll-reveal="enter top and move 50px over 1.2s" class="hexagon">
                     <!--<i class="fa fa-flash"></i><span></span>
                     -->
@@ -212,6 +224,7 @@
                         echo '<td style="float:left;">';
                         echo '<div class="imgcoffee"><img src="'.$siteUrl.'/images/'.$produto->getimg().'" /></div>';
                         echo '<div class="imgdescription"><p>'.$produto->getdescricao().'<p></div>';
+                        echo '<div class="imgprice"><p>Valor: R$ '.$produto->getvalor2decimal().'<p></div>';
                         echo '</td>';		
                         if  ($count == 4){
                             echo '</tr>';
@@ -229,51 +242,53 @@
             </div>
             <hr class="style-seven">
             <div class="editar-lista" id="editar">
-                <div class="form-group group-name">
-                  <?
-                      echo '<div class="select-person">';
-                          echo '<label for="selPerson">Nome:</label>';
-                          echo '<select class="form-control" id="selname">';
-                          echo '<option value="0">Selecione seu nome:</option>';  
-                          foreach($pessoas as $pessoa){	
-                                echo '<option value="'.$pessoa->getid().'">'.$pessoa->getnome().'</option>';
-                          }
-                          echo '</select>';
-                      echo '</div>';
-                  ?>
-                </div>
-                <div class="form-group">
-                  <?
-                      $count = 1;
-                      $break = 0;  
-                      foreach($produtos as $produto){	
-                          if ($break == 0){
-                                echo '<div class="clear"></div>';
-                            }
-                          echo '<div class="select-product">';
-                              echo '<label for="sel'.$count.'">'.$produto->getdescricao().':</label>';
-                              echo '<select class="form-control" id="sel'.$count.'">';
-                                echo '<option>0</option>';
-                                echo '<option>1</option>';
-                                echo '<option>2</option>';
-                                echo '<option>3</option>';
-                                echo '<option>4</option>';
-                                echo '<option>5</option>';
+                <form role="form" method="post" action="atualizaLista.php">
+                    <div class="form-group group-name">
+                      <?
+                          echo '<div class="select-person">';
+                              echo '<label for="selPerson">Nome:</label>';
+                              echo '<select class="form-control" id="selname" name="selname">';
+                              echo '<option value="0">Selecione seu nome:</option>';  
+                              foreach($pessoas as $pessoa){	
+                                    echo '<option value="'.$pessoa->getid().'">'.$pessoa->getnome().'</option>';
+                              }
                               echo '</select>';
                           echo '</div>';
-                          $count ++;
-                          if  ($break == 5){
-                                $break  = 0;
-                            } else {
-                                $break ++;
-                            }
-                      }
-                  ?>
-                    <div class="clear"></div>
-                    <div style="margin: 15px;">
-                        <button class="btn btn-success">Atualizar Lista</button>
+                      ?>
                     </div>
-                </div>
+                    <div class="form-group">
+                      <?
+                          $count = 1;
+                          $break = 0;  
+                          foreach($produtos as $produto){	
+                              if ($break == 0){
+                                    echo '<div class="clear"></div>';
+                                }
+                              echo '<div class="select-product">';
+                                  echo '<label for="sel'.$count.'">'.$produto->getdescricao().':</label>';
+                                  echo '<select class="form-control" id="sel'.$count.'" name="sel'.$count.'" >';
+                                    echo '<option>0</option>';
+                                    echo '<option>1</option>';
+                                    echo '<option>2</option>';
+                                    echo '<option>3</option>';
+                                    echo '<option>4</option>';
+                                    echo '<option>5</option>';
+                                  echo '</select>';
+                              echo '</div>';
+                              $count ++;
+                              if  ($break == 5){
+                                    $break  = 0;
+                                } else {
+                                    $break ++;
+                                }
+                          }
+                      ?>
+                        <div class="clear"></div>
+                        <div style="margin: 15px;">
+                            <button class="btn btn-success">Atualizar Lista</button>
+                        </div>
+                    </div>
+                </form>
              </div>
         </section>
     </div>    
@@ -381,6 +396,37 @@
             return i;
         }
     </script>
-	
+	<?php 
+    // Smart GET function
+    function GET($name=NULL, $value=false, $option="default")
+    {
+        $option=false; // Old version depricated part
+        $content=(!empty($_GET[$name]) ? trim($_GET[$name]) : (!empty($value) && !is_array($value) ? trim($value) : false));
+        if(is_numeric($content)) {
+            return preg_replace("@([^0-9])@Ui", "", $content);
+        } else if(is_bool($content)) {
+            return ($content?true:false);
+        } else if(is_float($content)) {
+            return preg_replace("@([^0-9\,\.\+\-])@Ui", "", $content);
+        } else if(is_string($content)) {
+            if(filter_var ($content, FILTER_VALIDATE_URL)) {
+                return $content;
+            } else if(filter_var ($content, FILTER_VALIDATE_EMAIL)) {
+                return $content;
+            } else if(filter_var ($content, FILTER_VALIDATE_IP)) {
+                return $content;
+            }else if(filter_var ($content, FILTER_VALIDATE_FLOAT)) {
+                return $content;
+            }else {
+                return preg_replace("@([^a-zA-Z0-9\p{Latin}\+\-\_\*\@\$\!\;\.\?\#\:\=\%\/\ ]+)@ui", "", $content);
+            }
+        }
+        else false;
+    }
+    /*
+    DEFAULT: $_GET['page'];
+    SMART: GET('page'); // return value or false if is null or bad input
+    */
+    ?>
 </body>
 </html>
