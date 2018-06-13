@@ -1,11 +1,11 @@
 <?
 	$purchase_id = 0;
     $count_produtos_ativos = 0;	
-    $siteUrl = "http://nocoffeenowork.esy.es/";
-	$servername = "127.0.0.1";
-	$username = "u358413504_user";
+    $siteUrl = "http://nocoffeenowork.juniormascarenhas.com/";
+	$servername = "mysql.hostinger.com.br";
+	$username = "u765057031_user";
 	$password = "Eisa2015";
-	$dbname = "u358413504_bd";
+	$dbname = "u765057031_bd";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);

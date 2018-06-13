@@ -5,15 +5,14 @@
 	include('db.class.php');
 	include('funcoes.inc.php');	
 				// Banco  | sevidor   | usuario | senha
-	$DB = new DB('u358413504_bd', '127.0.0.1', 'u358413504_user', 'Eisa2015' );
-	
+	$DB = new DB('u765057031_bd', 'mysql.hostinger.com.br', 'u765057031_user', 'Eisa2015' );
 	
 	define(SITENOME, 'nocoffeenowork');
 	define(DOMINIO, 'nocoffeenowork');
 	define(BASE, 		'/');
 	define(EMAILPRINCIPAL, 'juniorug@gmail.com');
 	date_default_timezone_set('America/Bahia');
-    $siteUrl = "http://nocoffeenowork.esy.es/";
+    $siteUrl = "http://nocoffeenowork.juniormascarenhas.com/";
 
 	# Variavel urlSite
     $url = $_SERVER['REQUEST_URI'];
