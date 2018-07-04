@@ -61,7 +61,7 @@ Class PPPSingle {
 	 * @return val_total - double
 	 */
 	public function getval_total(){
-		return $this->val_total;
+        return ((strpos($this->val_total, ',') !== false) ) ? $this->val_total : $this->val_total.',00';    
 	}
 
 	/**

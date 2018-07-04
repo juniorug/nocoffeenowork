@@ -68,33 +68,31 @@ DELIMITER ;
 
 ###### DML ###########
 INSERT into pessoa (nome,email,ativo) VALUES
-('Ana Luzia Santos Estrela','ana.l.estrela@ericssoninovacao.com.br',1),
-('Andre Araujo Silva','andre.a.silva@ericssoninovacao.com.br',1),
-('Andre Kazuo Horota','andre.k.horota@ericssoninovacao.com.br',1),
-('Antonio Luis Calazans Neto','antonio.l.neto@ericssoninovacao.com.br',1),
-('Ayran Costa da Cruz','ayran.c.cruz@ericssoninovacao.com.br',1),
+('Ayran Costa da Cruz','ayran.c.cruz@ericssoninovacao.com.br',0),
 ('Bernardo Decco de Siqueira','bernardo.d.siqueira@ericssoninovacao.com.br',1),
 ('Cassio Lima Santiago','cassio.l.santiago@ericssoninovacao.com.br',1),
-('Daniela Santos Gama','daniela.s.gama@ericssoninovacao.com.br',1),
-('Diogo Yukio de Oliveira Camada','diogo.o.camada@ericssoninovacao.com.br',1),
+('Daniela Santos Gama','daniela.s.gama@ericssoninovacao.com.br',0),
+('Diogo Yukio de Oliveira Camada','diogo.o.camada@ericssoninovacao.com.br',0),
 ('Edivaldo M. F. De Jesus Junior','edivaldo.m.junior@ericssoninovacao.com.br',1),
-('Edson Felix Barbosa','edson.f.barbosa@ericssoninovacao.com.br',1),
+('Edson Felix Barbosa','edson.f.barbosa@ericssoninovacao.com.br',0),
 ('Fabio De Jesus Santos','fabio.j.santos@ericssoninovacao.com.br',1),
-('Flavio Luis Silva','flavio.l.silva@ericssoninovacao.com.br',1),
-('Iole Souza Lopes','iole.s.lopes@ericssoninovacao.com.br',1),
-('Jonathan Costa Muniz','jonathan.c.muniz@ericssoninovacao.com.br',1),
-('Leirson Barreto Da Silva','leirson.b.silva@ericssoninovacao.com.br',1),
-('Luciene Cardoso dos Santos','luciene.c.santos@ericssoninovacao.com.br',1),
-('Lucinio Vitor Brito Cortizo','lucinio.v.cortizo@ericssoninovacao.com.br',1),
-('Luisa Bernardes de Almeida Barreto','luisa.b.barreto@ericssoninovacao.com.br',1),
+('Flavio Luis Silva','flavio.l.silva@ericssoninovacao.com.br',0),
+('Jonathan Costa Muniz','jonathan.c.muniz@ericssoninovacao.com.br',0),
+('Luciene Cardoso dos SantdefaultDataPlaceholderos','luciene.c.santos@ericssoninovacao.com.br',0),
+('Lucinio Vitor Brito Cortizo','lucinio.v.cortizo@ericssoninovacao.com.br',0),
 ('Marcos Diniz Santos Moreira','marcos.d.moreira@ericssoninovacao.com.br',1),
-('Orlando Batista Santos Neto','orlando.b.neto@ericssoninovacao.com.br',1),
-('Rafael Dallapicola Brisson','rafael.d.brisson@ericssoninovacao.com.br',1),
-('Rodrigo Oliveira Cardozo','rodrigo.o.cardozo@ericssoninovacao.com.br',1),
-('Ronald Santos Pires','ronald.s.pires@ericssoninovacao.com.br',1),
-('Thercio Barreto de Queiroz','Thercio Barreto de Queiroz',1),
-('Thiago Luis Santana Melo','thiago.l.melo@ericssoninovacao.com.br',1),
-('Wesley Costa Mascarenhas','wesley.c.mascarenhas@ericssoninovacao.com.br',1);
+('Rafael Dallapicola Brisson','rafael.d.brisson@ericssoninovacao.com.br',0),
+('Ronald Santos Pires','ronald.s.pires@ericssoninovacao.com.br',0),
+('Wesley Costa Mascarenhas','wesley.c.mascarenhas@ericssoninovacao.com.br',0),
+('Andre Luis Castro Nascimento','andre.c.nascimento@ericssoninovacao.com.br',1),
+('Eduardo da Silva Neto','eduardo.s.neto@ericssoninovacao.com.br',1),
+('Fabio Rafael Almeida De Lima','fabio.r.lima@ericssoninovacao.com.br',1),
+('Icaro Jerry Salles Santana','icaro.s.santana@ericssoninovacao.com.br',1),
+('Nailane Cardoso Oliveira','nailane.c.oliveira@ericssoninovacao.com.br',1),
+('Pedro Gabriel Romanno Lisboa','pedro.g.lisboa@ericssoninovacao.com.br',1),
+('Rodrigo Araujo Campos','rodrigo.a.campos@ericssoninovacao.com.br',1),
+('Thiago Henrique Chaves Neri','thiago.h.neri@ericssoninovacao.com.br',1);
+
 
 ## TB produtos
 INSERT into produto (descricao,img,link,valor,ativo) VALUES

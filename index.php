@@ -195,7 +195,7 @@
                 <div style="text-align: center;" id="status">
                     <h5 data-scroll-reveal="enter top and move 50px over 1.4s" style="display: inline;">
                         <?
-                            $qtde_min_caixas = 30;
+                            $qtde_min_caixas = 36;
                             $consulta = $DB->consulta('SELECT qtde_caixas FROM pedido WHERE pedido_atual = 1');
                             $total = $consulta->fetch_row();
                             $diff = (($qtde_min_caixas - $total[0]) > 0) ? ($qtde_min_caixas - $total[0]) : 0;
